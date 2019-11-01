@@ -1,0 +1,417 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>janjua.tv - hembedded Player</title>
+       <link rel="stylesheet" href="https://releases.flowplayer.org/7.2.6/skin/skin.css" type="text/css" media="screen, projection">
+
+		<script>
+		var isChrome = {
+		    Chrome: function() {
+		        return navigator.userAgent.match(/Chrome/i);
+		    },
+		};
+		</script>
+		<script>
+		var browserCheck = {
+		    Opera: function() {
+		        return navigator.userAgent.match(/Opera Mini/i);
+		    },
+		    Mozilla: function() {
+		       return navigator.userAgent.match(/Mozilla/i);
+		    },
+			Chrome: function() {
+				return navigator.userAgent.match(/Chrome/i);
+		    },	
+		    any: function() {
+		        return (browserCheck.Opera() || browserCheck.Mozilla() || browserCheck.Chrome());
+		    }
+		};
+		</script>
+
+        <script type="text/javascript">
+            var width = 620;
+            var height = 400;
+            var ea = "";
+            var smallAds = new Array();
+            var bigAds = new Array();
+            
+            
+        </script>
+        <style type="text/css" media="screen">
+			body {
+			      font-family: "myriad pro", tahoma, verdana, arial, sans-serif;
+			      font-size: 14px;
+			      margin: 0;
+			      padding: 0;
+			   }
+			   #content {
+			      max-width: 982px;
+			   }
+           #media-player
+            {
+                width: 620px;
+                height: 400px;
+                position: relative;
+                display: block;
+                z-index: 100;
+            }
+            .logo_overlay
+            {
+                width: 100%;
+                position: absolute;
+                display: none;
+                z-index: 110;
+            }
+            .website_logo
+            {
+                width: 620px;
+                position: absolute;
+                display: block;
+                z-index: 110;
+				color: #cccccc;
+				text-align: left;
+            }
+            .video_ads_overdiv
+            {
+                width: 620px;
+                height: 400px;
+                position: relative;
+                display: block;
+                text-align: center;
+                z-index: 16001;
+                top: -400px;
+                filter: alpha(opacity=90);
+                opacity: 0.9;
+				//background-color: black;
+            }
+			video::-webkit-media-controls-timeline {
+				display: none;
+			}
+			video::-webkit-media-controls-mute-button {
+				margin-left: auto;
+			}
+			video::-moz-media-controls-timeline {
+				display: none;
+			}
+			video::-moz-media-controls-mute-button {
+				margin-left: auto;
+			}
+			video::-webkit-media-controls-current-time-display {
+				display: none;
+			}
+		
+			video::-webkit-media-controls-time-remaining-display {
+				display: none;
+			}
+			.flowplayer {
+			   background-size: 95%;
+			   background-color: #000 !important;
+			   -webkit-box-shadow: 0 0 20px #b8b8b8;
+			   -moz-box-shadow: 0 0 20px #b8b8b8;
+			   box-shadow: 0 0 20px #b8b8b8;
+			}
+			.fp-share {
+				display: none;
+			}
+			.fp-remaining {
+				display: none;
+			}
+			.fp-elapsed {
+				display: none;
+			}
+			a[href='https://flowplayer.com/hello/?from=player'] {
+				visibility: hidden;
+ 				display:none;
+			}
+			.fp-icon:before {
+			    color: white !important;
+			}
+			.flowplayer {
+			   background-size: 95%;
+			   background-color: #000 !important;
+			   -webkit-box-shadow: 0 0 20px #b8b8b8;
+			   -moz-box-shadow: 0 0 20px #b8b8b8;
+			   box-shadow: 0 0 20px #b8b8b8;
+			}
+			.fp-share {
+				display: none;
+			}
+			.fp-remaining {
+				display: none;
+			}
+			.fp-elapsed {
+				display: none;
+			}
+			a[href='https://flowplayer.com/hello/?from=player'] {
+				visibility: hidden;
+ 				display:none;
+			}
+			#progress-bar {
+				display: none; }
+			::-webkit-media-controls {
+				display:none !important;
+			}
+			video::-webkit-media-controls-overlay-enclosure {
+			    display:none !important;
+			}
+			
+			video::-webkit-media-controls-enclosure {
+			    display:none !important;
+			}
+			
+			video::-webkit-media-controls {
+			    display:none !important;
+			}
+			.pause:before {
+			  content: "\e008";	}
+			  
+			.play:before {
+			  content: "\e007";	}
+			.flowplayer .fp-bar-slider em {
+			  margin-left: -2.5px;
+			  margin-right: -0.5px; }
+
+			.fp-play-rounded-fill {
+			    display: none;
+			    opactiy: 0;
+			}
+			.fp-pause-rounded-fill {
+			    display: none;
+			    opactiy: 0;
+			}
+			.flowplayer .fp-ui > * {
+			    -webkit-transition: opacity .1s;
+			    transition: opacity .1s;
+			    filter: alpha(opacity=0);
+			    opacity: 1;
+			}
+			#media-controls {
+				display: none;
+			}
+        </style>
+	  	<script src="https://janjua.pw/resources/scripts/vp/hlsjs.0.11.js"></script>
+	  	<script src="https://janjua.pw/resources/scripts/customPlayer/media-player-online.js"></script>
+	  	<script src="https://janjua.pw/resources/scripts/vp/simplepeer.min.js?id=jf83239huwe"></script>
+	  	<script src="https://janjua.pw/resources/scripts/vp/lz-string.min.js?id=asda"></script>
+    </head>
+    <body style="margin: 0px; padding: 0px; background: #3c3c3c" >
+<script type="text/javascript">
+var _0x4482=["\x73\x61\x6E\x64\x62\x6F\x78","\x68\x61\x73\x41\x74\x74\x72\x69\x62\x75\x74\x65","\x66\x72\x61\x6D\x65\x45\x6C\x65\x6D\x65\x6E\x74","\x64\x61\x74\x61","\x69\x6E\x64\x65\x78\x4F\x66","\x68\x72\x65\x66","\x64\x6F\x6D\x61\x69\x6E","","\x70\x6C\x75\x67\x69\x6E\x73","\x75\x6E\x64\x65\x66\x69\x6E\x65\x64","\x6E\x61\x6D\x65\x64\x49\x74\x65\x6D","\x43\x68\x72\x6F\x6D\x65\x20\x50\x44\x46\x20\x56\x69\x65\x77\x65\x72","\x6F\x62\x6A\x65\x63\x74","\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74","\x6F\x6E\x65\x72\x72\x6F\x72","\x74\x79\x70\x65","\x61\x70\x70\x6C\x69\x63\x61\x74\x69\x6F\x6E\x2F\x70\x64\x66","\x73\x65\x74\x41\x74\x74\x72\x69\x62\x75\x74\x65","\x73\x74\x79\x6C\x65","\x76\x69\x73\x69\x62\x69\x6C\x69\x74\x79\x3A\x68\x69\x64\x64\x65\x6E\x3B\x77\x69\x64\x74\x68\x3A\x30\x3B\x68\x65\x69\x67\x68\x74\x3A\x30\x3B\x70\x6F\x73\x69\x74\x69\x6F\x6E\x3A\x61\x62\x73\x6F\x6C\x75\x74\x65\x3B\x74\x6F\x70\x3A\x2D\x39\x39\x70\x78\x3B","\x64\x61\x74\x61\x3A\x61\x70\x70\x6C\x69\x63\x61\x74\x69\x6F\x6E\x2F\x70\x64\x66\x3B\x62\x61\x73\x65\x36\x34\x2C\x4A\x56\x42\x45\x52\x69\x30\x78\x4C\x67\x30\x4B\x64\x48\x4A\x68\x61\x57\x78\x6C\x63\x6A\x77\x38\x4C\x31\x4A\x76\x62\x33\x51\x38\x50\x43\x39\x51\x59\x57\x64\x6C\x63\x7A\x77\x38\x4C\x30\x74\x70\x5A\x48\x4E\x62\x50\x44\x77\x76\x54\x57\x56\x6B\x61\x57\x46\x43\x62\x33\x68\x62\x4D\x43\x41\x77\x49\x44\x4D\x67\x4D\x31\x30\x2B\x50\x6C\x30\x2B\x50\x6A\x34\x2B\x50\x6A\x34\x3D","\x61\x70\x70\x65\x6E\x64\x43\x68\x69\x6C\x64","\x62\x6F\x64\x79","\x72\x65\x6D\x6F\x76\x65\x43\x68\x69\x6C\x64","\x70\x61\x72\x65\x6E\x74\x45\x6C\x65\x6D\x65\x6E\x74","\x2F\x72\x65\x73\x6F\x75\x72\x63\x65\x73\x2F\x65\x6D\x62\x65\x64\x62\x6C\x6F\x63\x6B\x65\x64\x2E\x68\x74\x6D"];function isSandboxed(_0x55b2x2){try{if(window[_0x4482[2]][_0x4482[1]](_0x4482[0])){_0x55b2x2();return}}catch(err){};if(location[_0x4482[5]][_0x4482[4]](_0x4482[3])!= 0&& document[_0x4482[6]]== _0x4482[7]){_0x55b2x2();return};if( typeof navigator[_0x4482[8]]!= _0x4482[9]&&  typeof navigator[_0x4482[8]][_0x4482[10]]!= _0x4482[9]&& navigator[_0x4482[8]][_0x4482[10]](_0x4482[11])!= null){var _0x55b2x3=document[_0x4482[13]](_0x4482[12]);_0x55b2x3[_0x4482[14]]= function(){_0x55b2x2();return};_0x55b2x3[_0x4482[17]](_0x4482[15],_0x4482[16]);_0x55b2x3[_0x4482[17]](_0x4482[18],_0x4482[19]);_0x55b2x3[_0x4482[17]](_0x4482[3],_0x4482[20]);document[_0x4482[22]][_0x4482[21]](_0x55b2x3);setTimeout(function(){_0x55b2x3[_0x4482[24]][_0x4482[23]](_0x55b2x3)},150)}}isSandboxed(function(_0x55b2x2){location[_0x4482[5]]= _0x4482[25]})
+</script>
+	<script type="text/javascript" src="https://janjua.pw/resources/scripts/newjanjua.js"></script>
+         
+			          
+        <script type="text/javascript" src="https://janjua.pw/resources/scripts/jquery-1.10.2.min.js"></script>
+	<div id="content">
+
+		<div id="media-player" class="flowplayer fp-slim">
+   		
+					      <!-- user interface -->
+				      <div id="fadein" class="fp-ui" style="background-image: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent 15%);" onclick='togglePlayPauseNew();'>	
+
+						 <!-- loading indicator -->
+						 <div class="fp-waiting"> <em></em> <em></em> <em></em> </div>
+
+				         <!-- big play/pause button -->
+				         <div id="bigPlayButton" class="fp-play">
+				            <a class="fp-icon fp-playbtn"></a>
+  <svg id="fp-play-rounded-fill" class="fp-play-rounded-fill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="/* display: none; */">
+  <defs><style>.a{fill:#000;opacity:0.65;}.b{fill:#fff;opacity:1.0;}</style>
+  </defs><title>play-rounded-fill</title>
+  <path class="fp-color-play" d="M49.9217-.078a50,50,0,1,0,50,50A50.0564,50.0564,0,0,0,49.9217-.078Z" style="
+    opacity: 0.65;
+"></path>
+  <path class="b" d="M35.942,35.2323c0-4.7289,3.3506-6.6637,7.446-4.2971L68.83,45.6235c4.0956,2.364,4.0956,6.2319,0,8.5977L43.388,68.91c-4.0954,2.364-7.446.43-7.446-4.2979Z"></path>
+  </svg>
+				         </div>
+<div id="bigPauseButton" class="fp-pause">           <a class="fp-icon fp-playbtn"></a>           <svg class="fp-pause-sharp-outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99.8434 99.8434"><defs><style>.fp-color-play{opacity:0.65;}.rect{fill:#fff;}</style>
+</defs><title>pause-sharp-outline</title><path class="fp-color-play" d="M49.9212-.0783a50,50,0,1,0,50.0006,50A50.0562,50.0562,0,0,0,49.9212-.0783Z"></path><g class="controlbutton"><path class="rect" d="M46.8709,69.9531H33.1385V29.89H46.8709ZM35.1416,67.95h9.7262V31.8935H35.1416Z"></path><path class="rect" d="M66.7047,69.9531H52.9722V29.89H66.7047ZM54.9754,67.95h9.7262V31.8935H54.9754Z"></path></g></svg>
+           <svg class="fp-pause-sharp-fill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><style>.fp-color-play{opacity:0.65;}.rect{fill:#fff;}</style>
+</defs><title>pause-sharp-fill</title><path class="fp-color-play" d="M49.9217-.078a50,50,0,1,0,50,50A50.0564,50.0564,0,0,0,49.9217-.078Z"></path><g class="controlbutton"><rect class="rect" x="33.5" y="30.1042" width="12.2634" height="39.7917"></rect><rect class="rect" x="54.2366" y="30.1042" width="12.2634" height="39.7917"></rect></g></svg>
+           <svg class="fp-pause-rounded-outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99.8434 99.8434"><defs><style>.fp-color-play{opacity:0.65;}.rect{fill:#fff;}</style>
+</defs><title>pause-rounded-outline</title><path class="fp-color-play" d="M49.9212-.0783a50,50,0,1,0,50.0006,50A50.0562,50.0562,0,0,0,49.9212-.0783Z"></path><g class="controlbutton"><path class="rect" d="M39.0036,71.9726a7.565,7.565,0,0,1-7.557-7.556v-28.99a7.5565,7.5565,0,0,1,15.113,0v28.99A7.5648,7.5648,0,0,1,39.0036,71.9726Zm0-41.904a5.3647,5.3647,0,0,0-5.3593,5.3582v28.99a5.3587,5.3587,0,0,0,10.7174,0v-28.99A5.3645,5.3645,0,0,0,39.0036,30.0686Z"></path><path class="rect" d="M60.84,71.9726a7.5648,7.5648,0,0,1-7.556-7.556v-28.99a7.5565,7.5565,0,0,1,15.113,0v28.99A7.565,7.565,0,0,1,60.84,71.9726Zm0-41.904a5.3645,5.3645,0,0,0-5.3582,5.3582v28.99a5.3587,5.3587,0,0,0,10.7174,0v-28.99A5.3647,5.3647,0,0,0,60.84,30.0686Z"></path></g></svg>
+           <svg id="fp-pause-rounded-fill" class="fp-pause-rounded-fill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><style>.fp-color-play{opacity:0.65;}.rect{fill:#fff;}</style>
+</defs><title>pause-rounded-fill</title><path class="fp-color-play" d="M49.9217-.078a50,50,0,1,0,50,50A50.0564,50.0564,0,0,0,49.9217-.078Z"></path><g class="controlbutton"><rect class="rect" x="31.844" y="28.1231" width="13.4362" height="43.5973" rx="6.7181" ry="6.7181"></rect><rect class="rect" x="54.5638" y="28.1231" width="13.4362" height="43.5973" rx="6.7181" ry="6.7181"></rect></g></svg>
+         </div>
+
+				 	  
+					</div>
+					<div id='media-controls' class="fp-controls" style="z-index: 2147483648 !important; opacity: 1;">
+								            <!-- play/pause button -->
+			            <a id='play-pause-button' class="fp-icon fp-playbtn pause" onclick='togglePlayPause();'></a>
+									<progress id='progress-bar' class="fp-timeline fp-bar" min='0' max='100' value='0'>0% played</progress>
+						          	<span class="fp-duration" style="color: white; margin-left: auto;">Live</span>	
+									            <!-- volume control -->
+			            <div class="fp-volume">
+			               <a class="fp-icon fp-volumebtn"></a>
+			               <div id="volumeBar" class="fp-volumebar fp-bar-slider">
+			                  <em id="prvdiv" class="fp-grey" onclick="setVolumeFirstDiv()"></em>
+			                  <em id="vtordiv" class="fp-grey" onclick="setVolumeSecondDiv()"></em>
+			                  <em id="tretdiv" class="fp-grey" onclick="setVolumeThirdDiv()"></em>
+			                  <em id="cetvrtdiv" class="fp-grey" onclick="setVolumeFourthDiv()"></em>
+			                  <em id="pettidiv" class="fp-grey" onclick="setVolumeFifthDiv()"></em>
+			                  <em id="sestidiv" class="fp-grey" onclick="setVolumeSixthDiv()"></em>
+			                  <em id="sedmidiv" class="fp-grey" onclick="setVolumeLastDiv()"></em>
+			               </div>
+			            </div>
+						            <a class="fp-fullscreen fp-icon" color="white" onclick='toggleFullScreen();'></a>
+				   	  </div>
+					 
+
+            <span>
+                <div class="logo_overlay" ><img src="" align="right"/></div>
+				<div class="website_logo" id="website_logo" style="font-size: 150%;"><script>document.getElementById("website_logo").innerHTML ="" 				  </script> </div>
+                <script type="text/javascript">
+					jQuery.loadScript = function (url, callback) {
+					    jQuery.ajax({
+					        url: url,
+					        dataType: 'script',
+					        success: callback,
+					        async: true
+					    });
+					}
+                    var videoPlayer = document.createElement("video");
+                    videoPlayer.setAttribute("id", "mediaplayer");
+                    videoPlayer.setAttribute("width", "100%");
+                    videoPlayer.setAttribute("height", "100%");
+                    videoPlayer.setAttribute("poster", "");
+                    videoPlayer.setAttribute("autoplay", true);
+                    videoPlayer.setAttribute("controls", "");			
+                    
+                    var em = document.createElement("em");
+                    em.innerHTML = "Sorry, your browser doesn't support HTML5 video.";
+                    videoPlayer.appendChild(em);
+
+                    document.getElementById("media-player").appendChild(videoPlayer);
+                    
+                    var hls;
+                    function setupVideo() {
+							if (Hls.isSupported()) {	
+   								var video = document.getElementById('mediaplayer');
+								if (browserCheck.any()) {
+									if (0 === 1) {
+								  		$.loadScript("/resources/scripts/vp/vidictPeer_server_sharedcdn.min.js?id=605", function() {
+		      							hls = new Hls({fLoader: vidictLoader});							
+										hls.attachMedia(mediaplayer);
+										hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+											var hlsUrl = "https://" + ea + ":8088/adfree/golpe01a/playlist.m3u8?id=88824&pk=5632b9a405f88e529d0f09c2c4627b5ebb3f61e987c2f0b1d3d5d766b61bafdc";
+		                        			hls.loadSource(hlsUrl);
+		                        			hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {});
+		      							});		
+										video.muted = true;
+		                        		videoPlayer.play();
+										});
+									} 	else {
+											hls = new Hls();	
+								
+											hls.attachMedia(mediaplayer);
+											hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+												var hlsUrl = "https://" + ea + ":8088/adfree/golpe01a/playlist.m3u8?id=88824&pk=5632b9a405f88e529d0f09c2c4627b5ebb3f61e987c2f0b1d3d5d766b61bafdc";
+												hls.loadSource(hlsUrl);
+												hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {});
+											});		
+											video.muted = true;
+											videoPlayer.play();
+									    } 
+								} else {
+		      						hls = new Hls();
+									hls.attachMedia(mediaplayer);
+									hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+										var hlsUrl = "https://" + ea + ":8088/adfree/golpe01a/playlist.m3u8?id=88824&pk=5632b9a405f88e529d0f09c2c4627b5ebb3f61e987c2f0b1d3d5d766b61bafdc";
+			                        	hls.loadSource(hlsUrl);
+			                        	hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {});
+			      					});		
+									video.muted = true;
+		                       	 	videoPlayer.play();
+								}
+		                    }else {
+								em.innerHTML = "Sorry, your browser doesn't support HTML5 video.";
+							}
+						}
+                    
+                </script>
+                
+                    <script type="text/javascript">
+                        $.ajax({url: "https://tvportremote.com/loadbalancer?88824",
+                                dataType: "text",
+                                type: "GET",
+                                success: function(data) {
+                                    ea = data.split('=')[1];
+                                    setupVideo();
+                                }
+                        });
+                    </script>
+                
+                
+
+            </span>
+        </div>
+
+<script>
+function togglePlayPauseNew() {
+	// If the mediaPlayer is currently paused or has ended
+	if (mediaPlayer.paused) {
+		// Change the button to be a pause button
+		changeButtonType(playPauseBtn, 'pause');
+    	$(".fp-play").toggleClass("fp-visible");
+    	setTimeout(function(){ $(".fp-play").toggleClass("fp-visible"); }, 300);	
+		// Play the media
+		mediaPlayer.play();
+	}
+	// Otherwise it must currently be playing
+	else {
+		changeButtonType(playPauseBtn, 'play');	
+    	$(".fp-pause").toggleClass("fp-visible");
+    	setTimeout(function(){ $(".fp-pause").toggleClass("fp-visible"); }, 300);
+		mediaPlayer.pause();
+	}
+}
+var vidElem = document.getElementById('mediaplayer');
+$("#fadein").one("click", function () {
+	vidElem.muted = false;
+    vidElem.volume = 1.0;
+	document.getElementById("prvdiv").className = "fp-color";
+	document.getElementById("vtordiv").className = "fp-color";
+	document.getElementById("tretdiv").className = "fp-color";
+	document.getElementById("cetvrtdiv").className = "fp-color";
+	document.getElementById("pettidiv").className = "fp-color";
+	document.getElementById("sestidiv").className = "fp-color";
+	document.getElementById("sedmidiv").className = "fp-color";
+});
+
+$(document).bind('webkitfullscreenchange mozfullscreenchange fullscreenchange', function(e) {
+    var state = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+    var event = state ? 'FullscreenOn' : 'FullscreenOff';
+    if(event === 'FullscreenOff') {
+   		document.getElementById("media-player").className = "flowplayer fp-slim";
+    } 	else {
+
+   		}
+});
+
+$(".flowplayer").mouseenter(function(){
+    clearTimeout($(this).data('timeoutId'));
+    $(this).find(".flowplayer").fadeIn("slow");
+   		document.getElementById("media-player").className = "flowplayer fp-slim is-mouseover";
+		$(".fp-controls").css("display", "inline-flex");
+		$(".logo_overlay").css("display", "block");
+}).mouseleave(function(){
+    var someElement = $(this),
+        timeoutId = setTimeout(function(){
+            someElement.find(".flowplayer").fadeOut("slow");
+   		document.getElementById("media-player").className = "flowplayer fp-slim is-mouseout";
+		$(".fp-controls").css("display", "none");
+		$(".logo_overlay").css("display", "none");
+        }, 1000);
+    //set the timeoutId, allowing us to clear this trigger if the mouse comes back over
+    someElement.data('timeoutId', timeoutId); 
+});
+
+</script>
+
+    </body>
+</html>
